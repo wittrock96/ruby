@@ -1,9 +1,0 @@
-rails g model Comment comment:string commentable:references{polymorphic}
-rake db:migrate
-rails c
-Comment.create(commentable_id: 1, comment:"what up", commentable_type:"User")
-Comment.create(commentable_id: 1, comment:"what up", commentable_type:"Post")
-Comment.create(commentable_id: 1, comment:"what up", commentable_type:"Blog")
-Comment.create(commentable_id: 1, comment:"what up", commentable_type:"Message")
-Comment.second.update(comment:"I would like to drive to a party in an LFA, but I would like to arrive in a disco valante")
-Comment.third.delete
