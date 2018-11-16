@@ -1,0 +1,27 @@
+<h1>welcome, <%= @user.name %> </h1>
+<h4>your secrets</h4>
+<% @user.secrets.each do |secret| %>
+	<p>secret: <%= secret.content %></p>
+	<p>likes: <%= secret.likes.count %></p>
+<% end %>
+<h3>all secrets</h3>
+
+<table>
+	<thead>
+		<th>secret</th>
+		<th>likes</th>
+		<th>action</th>
+
+	</thead>
+	<% @secrets.each do |secret| %>
+	<tr>
+		<td><%= secret.content %></td>
+		<td><%= secret.likes.count %></td>
+		<td><a href="/likes/<%= secret.id %>" data-method="post">like</a></td>
+	</tr>
+	<% end %>
+</table>
+<a href="/secrets/new">create a secret</a>
+
+<a href="/logout" data-method="delete">logout</a>
+

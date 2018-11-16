@@ -1,0 +1,21 @@
+<h1>welcome <%= @user.username %></h1>
+<form action="/messages/create" method="post">
+	<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+	<input type="text" name="content">
+	<button type="submit">create message</button>
+</form>
+
+<% @messages.each do |message| %>
+	<h3><%= message.user.username %></h3>
+	<h4>Message: <%= message.message %></h4>
+	<% message.comments.each do |comment| %>
+		<p>comment: <%= comment.content %></p>
+	<% end %>
+	<form action="/comments/create" method="post">
+		<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+		<input type="text" name="content">
+		<input type="hidden" name="message" value="<%= message.id %>">
+		<button type="submit">add comment</button>
+	</form>
+
+<% end %>

@@ -1,0 +1,27 @@
+<h1>welcome</h1>
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p id="errors"><%= error %></p>  
+  <% end %>
+<% end %>
+
+<form action="/users/create" method="post">
+	<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+	<label>first name: </label>
+	<input type="text" name="user[first_name]">
+	<label>last name: </label>
+	<input type="text" name="user[last_name]">
+	<label>email: </label>
+	<input type="text" name="user[email]">
+	<label>location:</label>
+	<select name="user[location]">
+		<% @states.each do |state| %>
+			<option><%= state %></option>
+		<% end %>
+	</select>
+	<label>password: </label>
+	<input type="password" name="user[password]">
+	<label>confirm password: </label>
+	<input type="password" name="user[password_confirmation]">
+	<button type="submit">create user</button>
+</form>

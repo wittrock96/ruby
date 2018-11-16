@@ -34,9 +34,7 @@ class RpgsController < ApplicationController
 			activity[:color] = "red"
 			activity[:message] = "you lost #{gold} golds from the #{building}"
 		end
-		return activity
-
-		
+		return activity		
 	end
 
 

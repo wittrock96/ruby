@@ -1,0 +1,15 @@
+<h1>login in to conintue</h1>
+
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p id="errors"><%= error %></p>  
+  <% end %>
+<% end %>
+<form action="/sessions/create" method="post">
+	<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+	<label>email:</label>
+	<input type="text" name="email">
+	<label>password:</label>
+	<input type="password" name="password">
+	<button type="submit">login</button>
+</form>
