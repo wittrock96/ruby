@@ -1,0 +1,23 @@
+// Place all the styles related to the groups controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#group{
+	display: inline-block;
+	vertical-align: top;
+	border: 3px solid blue;
+	text-align: center;
+	margin-left: 300px;
+}
+input{
+	margin-right: 15px;
+}
+#list{
+	display: inline-block;
+
+}
+#update{
+	text-align: center;
+}
+button{
+	margin-top: 10px;
+}

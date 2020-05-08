@@ -1,0 +1,27 @@
+<a href="/session/destroy" data-method="delete">logout</a>
+<a href="/groups/index">home</a>
+<h1><%= @group.name %></h1> 
+	<% if @members.exists?(user_id: @user.id) %>
+		<a href="/members/leave" data-method="delete"><button>leave</button></a>
+	<% else %>
+		<a href="/members/create/<%= @group.id %>" data-method="post"><button>join</button></a>
+	<% end %>
+
+<p><%= @group.description %></p>
+
+<p>created by: 
+	<% if @group.user == @user %>
+		you
+		<a href="/groups/delete/<%= @group.id %>" data-method="delete"><button>delete group</button></a>
+		<a href="/groups/edit/<%= @group.id %>">edit group</a>
+
+	<% else %>
+		<%= @group.user.first_name %> <%= @group.user.last_name %>
+
+	<% end %></p>
+<p>members</p>
+<ul>	
+	<% @members.each do |member| %>
+	<li><%= member.user.first_name %> <%= member.user.last_name %></li>
+	<% end %>
+</ul>

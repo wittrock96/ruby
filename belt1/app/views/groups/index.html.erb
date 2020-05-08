@@ -1,0 +1,30 @@
+
+<a href="/session/destroy" data-method="delete">logout</a>
+<a href="/users/edit">edit your profile</a>
+<h1>Hi, <%= @user.first_name %> <%= @user.last_name %></h1>
+<div id="list">
+<p>here are some organizations:</p>
+<% @groups.each do |group| %>
+	<a href="/groups/show/<%= group.id %>"><%= group.name %></a>
+	<p>members: <%= group.members.count %></p>
+	<p><%= group.description %></p>
+<% end %>
+</div>
+
+
+<div id="group">
+<% if flash[:errors] %>
+  <% flash[:errors].each do |error| %>
+    <p id="errors"><%= error %></p>  
+  <% end %>
+<% end %>
+	<form action="/groups/create" method="post">
+		<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+		<label>name of group:</label>
+		<input type="text" name="name">
+		<label>description:</label>
+		<input type="text" name="description">
+		<button type="submit">create group</button>
+
+	</form>
+</div>

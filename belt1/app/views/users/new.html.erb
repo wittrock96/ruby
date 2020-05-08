@@ -1,0 +1,42 @@
+<h1>welcome</h1>
+<% if flash[:reg_errors] %>
+  <% flash[:reg_errors].each do |error| %>
+    <p id="errors"><%= error %></p>  
+  <% end %>
+<% end %>
+
+<div id="registration">
+	<h3>registration</h3>
+	<form action="/users/create" method="post">
+		<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+		<label>first name:</label>
+		<input type="text" name="user[first_name]">
+		<label>last name:</label>
+		<input type="text" name="user[last_name]">
+		<label>email:</label>
+		<input type="text" name="user[email]">
+		<label>password</label>
+		<input type="password" name="user[password]">
+		<label>confirm password:</label>
+		<input type="password" name="user[password_confrimation]">
+		<button type="submit">register</button>
+	</form>
+</div>
+
+<div id="login">
+	<h3>login</h3>
+	<form action="/session/create" method="post">
+		<input type="hidden" name="authenticity_token" value="form_authenticity_token">
+		<label>email:</label>
+		<input type="text" name="email">
+		<label>password</label>
+		<input type="password" name="password">
+		<button type="submit">login</button>
+	</form>
+</div>
+<% if flash[:log_errors] %>
+  <% flash[:log_errors].each do |error| %>
+    <p id="errors"><%= error %></p>  
+  <% end %>
+<% end %>
+<a href="/session/destroy" data-method="delete">logout</a>
